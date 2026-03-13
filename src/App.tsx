@@ -1,3 +1,4 @@
+import { UsersList } from './components/UsersList'
 import { GlobalStyles } from './styles/GlobalStyles'
 
 function App() {
@@ -5,7 +6,7 @@ function App() {
   return (
     <>
     <GlobalStyles />
-      <h1>App</h1>
+      <UsersList />
     </>
   )
 }
