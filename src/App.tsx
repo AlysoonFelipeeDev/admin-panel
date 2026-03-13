@@ -1,4 +1,4 @@
-import { UsersList } from './components/UsersList'
+import { DefaultLayout } from './layouts/DefaultLayout'
 import { GlobalStyles } from './styles/GlobalStyles'
 
 function App() {
@@ -6,7 +6,8 @@ function App() {
   return (
     <>
     <GlobalStyles />
-      <UsersList />
+      <DefaultLayout />
+      
     </>
   )
 }
