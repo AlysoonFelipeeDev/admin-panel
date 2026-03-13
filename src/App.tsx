@@ -1,4 +1,5 @@
 import { DefaultLayout } from './layouts/DefaultLayout'
+import { Dashboard } from './pages/Dashboard'
 import { GlobalStyles } from './styles/GlobalStyles'
 
 function App() {
@@ -6,7 +7,9 @@ function App() {
   return (
     <>
     <GlobalStyles />
-      <DefaultLayout />
+      <DefaultLayout> 
+        {<Dashboard/>}
+      </DefaultLayout>
       
     </>
   )
