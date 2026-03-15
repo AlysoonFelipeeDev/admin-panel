@@ -1,5 +1,7 @@
 import type { ReactNode } from "react"
 import styled from "styled-components"
+import { Sidebar } from "./Sidebar"
+import { Header } from "./Header"
 
 interface DefaultLayoutProps {
     children: ReactNode
@@ -8,9 +10,13 @@ interface DefaultLayoutProps {
 export function DefaultLayout({children}: DefaultLayoutProps) {
     return (
         <Container>
-            <Sidebar></Sidebar>
+            <SidebarContainer>
+                <Sidebar/>
+            </SidebarContainer>
             <ContentContainer>
-                <Header></Header>
+                <HeaderContainer>
+                    <Header/>
+                </HeaderContainer>
                 {children}
             </ContentContainer>
         </Container>
@@ -21,25 +27,30 @@ const Container = styled.div`
     display: grid;
     grid-template-columns: 240px 1fr;
     height: 100vh;
-    background-color: #F3F3F7;
+    background-color: #F8F9FB;
 `
 
-const Sidebar = styled.div`
+const SidebarContainer = styled.div`
     grid-column: 1;
-    background-color: #6621F9;
+    background-color: #242B33;
+    position: relative;
 `
 
 const ContentContainer = styled.div`
     display: grid;
     grid-template-rows: 50px 1fr;
     gap: 10px;
-    margin: 0 20px
-    
+    margin: 0 20px;
 `
 
-const Header = styled.header`
-    background-color: #FFFFFF;
-    border-radius: 10px
+const HeaderContainer = styled.header`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #263850;
+    color: #FFFFFF;
+    border-radius: 10px;
+    padding: 0 20px
 `
 
 
