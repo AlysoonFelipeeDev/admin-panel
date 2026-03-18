@@ -15,9 +15,7 @@ export function Users() {
         ]
     return (
         <Container>
-            <HeaderSection>
             <PageHeader title={"Gerenciamento de Usuários"} action={" + Novo Usuário"}/>
-            </HeaderSection>
             <StatsGrid>
                 {stats.map(stat => (
                     <StatCard key={stat.label} label={stat.label} value={stat.value}/>
@@ -33,13 +31,6 @@ export function Users() {
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-`
-
-const HeaderSection = styled.section`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px 0
 `
 
 const StatsGrid = styled.div`

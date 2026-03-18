@@ -8,15 +8,22 @@ interface PageHeaderProps {
 
 export function PageHeader({title, action}: PageHeaderProps){
     return (
-        <>
+        <HeaderSection>
             <Title>{title}</Title>
             {action ? 
             <Button>{action}</Button> :
             ""
             }
-        </>
+        </HeaderSection>
     )
 }
+
+const HeaderSection = styled.section`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0
+`
 
 const Title = styled.h1`
     font-size: 30px;
