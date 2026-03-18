@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { DefaultLayout } from './layouts/DefaultLayout'
 import { Dashboard } from './pages/Dashboard'
 import { Users } from './pages/Users'
@@ -7,12 +8,15 @@ function App() {
 
   return (
     <>
-    <GlobalStyles />
-      <DefaultLayout> 
-        {<Dashboard/>}
-        <Users/>
-      </DefaultLayout>
-      
+      <GlobalStyles />
+      <BrowserRouter>
+        <DefaultLayout>
+      <Routes>
+        <Route path='/' element={<Dashboard/>} />
+        <Route path='/users' element={<Users/>} />
+      </Routes>
+        </DefaultLayout>
+      </BrowserRouter>
     </>
   )
 }
