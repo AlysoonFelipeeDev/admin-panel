@@ -25,8 +25,9 @@ export function RecentActivities({array}: RecentActivitiesProps){
 }
 
 const Container = styled.div`
-border-radius: 8px;
+    border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
     h2 {
         color: #181717;
         margin: 10px;
@@ -39,8 +40,8 @@ const ContainerActivities = styled.div`
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
-    background-color: #d49494;
-    color: #8d1a1a;
+    background-color: #ddd6d6;
+    color: #3a2d2d;
 `
 
 const Recents = styled.div`
