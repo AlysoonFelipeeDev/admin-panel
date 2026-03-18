@@ -15,7 +15,7 @@ export function Users() {
         ]
     return (
         <Container>
-            <PageHeader title={"Gerenciamento de Usuários"} action={" + Novo Usuário"}/>
+            <PageHeader title={"Gerenciamento de Usuários"}/>
             <StatsGrid>
                 {stats.map(stat => (
                     <StatCard key={stat.label} label={stat.label} value={stat.value}/>

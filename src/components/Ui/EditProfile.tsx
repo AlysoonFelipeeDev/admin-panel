@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Button } from "./Button"
 
 interface EditProfileProps {
     name: string,
@@ -14,7 +15,7 @@ export function EditProfile({name, email, data}: EditProfileProps){
                     <p>Email: {email}</p>
                     <p>Início: {data}</p>
                 </div>
-                <button>Editar</button>
+                <Button>Editar</Button>
             </ProfileUser>
         </>
     )
@@ -29,11 +30,4 @@ const ProfileUser = styled.div`
         margin-bottom: 20px;
         font-size: 1.5em;
     } 
-    button {
-        cursor: pointer;
-        border-radius: 10px;
-        border: none;
-        background-color: #2D425F;
-        color: #FFF;
-    }
 `

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react"
 import styled from "styled-components"
+import { Button } from "./Button"
 
 interface UserTableProps {
     array: {
@@ -29,8 +30,12 @@ export function UserTable({array}: UserTableProps){
                             <td>{item.position}</td>
                             <td>
                                 <ContainerButtons>
-                                    <button>Editar</button>
-                                    <button>Deletar</button>
+                                    <Button>
+                                        Editar
+                                    </Button>
+                                    <Button>
+                                        Deletar
+                                    </Button>
                                 </ContainerButtons>
                             </td>
                     </tr>
@@ -71,13 +76,6 @@ const StyledTable = styled.table`
 
 const ContainerButtons = styled.div`
     display: flex;
-    button {
-        margin-left: 5px;
-        border-radius: 5px;
-        border: none;
-        padding: 5px;
-        cursor: pointer;
-        background-color: #2D425F;
-        color: #FFF;
-    }
+    justify-content: space-between;
+    width: 150px;
 `

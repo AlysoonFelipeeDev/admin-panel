@@ -1,19 +1,15 @@
-import type { ReactNode } from "react"
 import styled from "styled-components"
+import { Button } from "./Button"
 
 interface PageHeaderProps {
     title: string
-    action?: ReactNode
 }
 
-export function PageHeader({title, action}: PageHeaderProps){
+export function PageHeader({title}: PageHeaderProps){
     return (
         <HeaderSection>
             <Title>{title}</Title>
-            {action ? 
-            <Button>{action}</Button> :
-            ""
-            }
+            <Button>+ Novo Usuário</Button>
         </HeaderSection>
     )
 }
@@ -30,11 +26,3 @@ const Title = styled.h1`
     font-weight: 530;
 `
 
-const Button = styled.button`
-    border: none;
-    border-radius: 10px;
-    padding: 10px;
-    cursor: pointer;
-    background-color: #2D425F;
-    color: #FFFFFF;
-`
