@@ -20,8 +20,8 @@ export function Sidebar(){
                     <ChartSpline/>  
                     <span>Relatórios</span>
                 </OptionsPages>
-                <OptionsPages to={'#'}>
-                    <UserRoundPen/> 
+                <OptionsPages to={"/profile"}>
+                    <UserRoundPen /> 
                     <span>Meu Perfil</span>
                 </OptionsPages>
                 <OptionsPages to={'#'}>

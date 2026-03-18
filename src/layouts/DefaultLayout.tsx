@@ -27,7 +27,7 @@ const Container = styled.div`
     display: grid;
     grid-template-columns: 240px 1fr;
     height: 100vh;
-    background-color: #F8F9FB;
+    background-color: #c9c9c9;
 `
 
 const SidebarContainer = styled.div`
