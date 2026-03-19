@@ -1,20 +1,47 @@
 import styled from "styled-components"
+import { useUser } from "../contexts/AuthContext"
+import { useForm } from "react-hook-form"
+import { loginSchema, type AuthFormData } from "../schemas/authSchema"
+import { zodResolver } from "@hookform/resolvers/zod"
 
 export function Login(){
+    const {signIn} = useUser()
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm<AuthFormData>({
+        resolver: zodResolver(loginSchema)
+    })
+
+    const onSubmit = (data: AuthFormData) => {
+        signIn(data)
+    }
+
     return (
         <Container>
             <ContainerForm>
                 <h1>Entre no painel:</h1>
-                <Form>
+                <Form onSubmit={handleSubmit(onSubmit)}>
                     <div>
                         <label htmlFor="name">Email:</label>
-                        <input type="email" id="email" />
+                        <input 
+                        type="email" 
+                        id="email" 
+                        {...register('email')}
+                        />
+                        {errors.email && <span>{errors.email.message}</span>}
                     </div>
                     <div>
                         <label htmlFor="password">Senha:</label>
-                        <input type="password" id="password"/>
+                        <input 
+                        type="password" 
+                        id="password"
+                        {...register('password')}
+                        />
+                        {errors.password && <span>{errors.password.message}</span>}
                     </div>
-                    <ButtonLogin><button>Entrar</button></ButtonLogin>
+                    <ButtonLogin><button type="submit">Entrar</button></ButtonLogin>
                 </Form>
                 <Register>
                     <p>Não tem cadastro?<button>Clique aqui!</button></p>
