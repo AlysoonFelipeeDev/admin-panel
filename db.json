@@ -1,6 +1,23 @@
 {
-    "users": [
-        {"id": 1, "name": "Alyson", "email": "alyson@teste.com", "password": "12345678"},
-        {"id": 2, "name": "Priscila", "email": "prii@teste.com", "password": "12345678"}
-    ]
+  "users": [
+    {
+      "id": 1,
+      "name": "Alyson",
+      "email": "alyson@teste.com",
+      "password": "12345678"
+    },
+    {
+      "id": 2,
+      "name": "Priscila",
+      "email": "prii@teste.com",
+      "password": "12345678"
+    },
+    {
+      "email": "lucas@teste.com",
+      "password": "$2a$10$yauhYB3VcYFo51q3hn3p8em7htoymHjMU35ORtCQaZSMneIb4QM0a",
+      "name": "Lucas",
+      "role": "admin",
+      "id": 3
+    }
+  ]
 }

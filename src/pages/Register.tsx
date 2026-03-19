@@ -1,43 +1,74 @@
 import styled from "styled-components"
+import { useUsers } from "../hooks/useUsers"
+import { useForm } from "react-hook-form"
+import { registerSchema, type RegisterFormData } from "../schemas/authSchema"
+import { zodResolver } from "@hookform/resolvers/zod"
+import type { User } from "../types/user"
+import { useNavigate } from "react-router-dom"
 
 export function Register(){
+    const {createUser, isCreating} = useUsers()
+    const navigate = useNavigate()
+    const {
+        register, 
+        handleSubmit,
+        formState: {errors}
+    } = useForm<RegisterFormData>({
+        resolver: zodResolver(registerSchema)
+    })
+
+    const handleSave = (user: Omit<User, 'id'>) => {
+        createUser(user)
+        navigate('/login')
+    }
+
     return (
         <Container>
             <ContainerForm>
                 <h1>Faça seu Cadastro:</h1>
-                <Form>
+                <Form onSubmit={handleSubmit(handleSave)}>
                     <div>
                         <label htmlFor="name">Nome</label>
                         <input 
                         type="text" 
                         id="name"
+                        {...register('name')}
+                        disabled={isCreating}
                         />
+                        {errors.name && <span>{errors.name.message}</span>}
                     </div>
                     <div>
                         <label htmlFor="name">Email:</label>
                         <input 
                         type="email" 
                         id="email" 
-                        
+                        {...register('email')}
+                        disabled={isCreating}
                         />
-                        
+                        {errors.email && <span>{errors.email.message}</span>}
                     </div>
                     <div>
                         <label htmlFor="password">Senha:</label>
                         <input 
                         type="password" 
                         id="password"
-                        
+                        {...register('password')}
+                        disabled={isCreating}
                         />
-                        
+                        {errors.password && <span>{errors.password.message}</span>}
                     </div>
                     <div>
-                        <select name="role">
-                            <option value="Admin">Administrador(a)</option>
-                            <option value="Member">Membro(a)</option>
+                        <label htmlFor="role">Função:</label>
+                        <select 
+                        id="role"
+                        {... register('role')}
+                        disabled={isCreating}
+                        >
+                            <option value="admin">Administrador(a)</option>
+                            <option value="member">Membro(a)</option>
                         </select>
                     </div>
-                    <ButtonLogin><button type="submit">Cadastrar</button></ButtonLogin>
+                    <ButtonLogin><button type="submit">{isCreating ? "Cadastrando..." : "Cadastrar"}</button></ButtonLogin>
                 </Form>
                 <Login>
                     <p>Já tem cadastro?<button>Clique aqui!</button></p>
