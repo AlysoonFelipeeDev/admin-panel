@@ -5,6 +5,7 @@ import { Users } from './pages/Users'
 import { GlobalStyles } from './styles/GlobalStyles'
 import { Profile } from './pages/Profile'
 import { Login } from './pages/Login'
+import { AuthProvider } from './contexts/AuthContext'
 
 function App() {
 
@@ -12,14 +13,16 @@ function App() {
     <>
       <GlobalStyles />
       <BrowserRouter>
-      <Routes>
-        <Route path='/login' element={<Login/>} />
-        <Route element={<DefaultLayout/>}>
-          <Route path='/' element={<Dashboard/>} />
-          <Route path='/users' element={<Users/>} />
-          <Route path='/profile' element={<Profile/>} />
-        </Route>
-      </Routes>
+        <AuthProvider>
+          <Routes>
+            <Route path='/login' element={<Login/>} />
+            <Route element={<DefaultLayout/>}>
+              <Route path='/' element={<Dashboard/>} />
+              <Route path='/users' element={<Users/>} />
+              <Route path='/profile' element={<Profile/>} />
+            </Route>
+          </Routes>
+        </AuthProvider>
       </BrowserRouter>
     </>
   )

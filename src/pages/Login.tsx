@@ -5,7 +5,7 @@ import { loginSchema, type AuthFormData } from "../schemas/authSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
 
 export function Login(){
-    const {signIn} = useUser()
+    const {signIn, logingIn} = useUser()
     const {
         register,
         handleSubmit,
@@ -29,6 +29,7 @@ export function Login(){
                         type="email" 
                         id="email" 
                         {...register('email')}
+                        disabled={logingIn}
                         />
                         {errors.email && <span>{errors.email.message}</span>}
                     </div>
@@ -38,13 +39,14 @@ export function Login(){
                         type="password" 
                         id="password"
                         {...register('password')}
+                        disabled={logingIn}
                         />
                         {errors.password && <span>{errors.password.message}</span>}
                     </div>
                     <ButtonLogin><button type="submit">Entrar</button></ButtonLogin>
                 </Form>
                 <Register>
-                    <p>Não tem cadastro?<button>Clique aqui!</button></p>
+                    <p>Não tem cadastro?<button>{logingIn ? "Entrando..." : "Clique aqui!"}</button></p>
                 </Register>
             </ContainerForm>
         </Container>
