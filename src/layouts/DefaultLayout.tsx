@@ -1,13 +1,10 @@
-import type { ReactNode } from "react"
 import styled from "styled-components"
 import { Sidebar } from "./Sidebar"
 import { Header } from "./Header"
+import { Outlet } from "react-router-dom"
 
-interface DefaultLayoutProps {
-    children: ReactNode
-}
 
-export function DefaultLayout({children}: DefaultLayoutProps) {
+export function DefaultLayout() {
     return (
         <Container>
             <SidebarContainer>
@@ -17,7 +14,7 @@ export function DefaultLayout({children}: DefaultLayoutProps) {
                 <HeaderContainer>
                     <Header/>
                 </HeaderContainer>
-                {children}
+                    <Outlet />
             </ContentContainer>
         </Container>
     )
