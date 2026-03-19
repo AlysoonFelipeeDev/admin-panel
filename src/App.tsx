@@ -6,6 +6,7 @@ import { GlobalStyles } from './styles/GlobalStyles'
 import { Profile } from './pages/Profile'
 import { Login } from './pages/Login'
 import { AuthProvider } from './contexts/AuthContext'
+import { Register } from './pages/Register'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <AuthProvider>
           <Routes>
             <Route path='/login' element={<Login/>} />
+            <Route path='/register' element={<Register />} />
             <Route element={<DefaultLayout/>}>
               <Route path='/' element={<Dashboard/>} />
               <Route path='/users' element={<Users/>} />
