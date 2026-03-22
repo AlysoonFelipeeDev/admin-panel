@@ -1,9 +1,11 @@
 import { ChartSpline, LayoutDashboard, LogOut, Settings, UserRoundPen, Users } from "lucide-react"
 import { Link} from "react-router-dom"
 import styled from "styled-components"
+import { useUser } from "../contexts/AuthContext"
 
 
 export function Sidebar(){
+    const {logout} = useUser()
     return (
         <>
             <Header>ADMIN PAINEL</Header>
@@ -31,7 +33,7 @@ export function Sidebar(){
             </Container>
             <Logout>
                     <LogOut color="red"/>
-                <button>
+                <button onClick={logout}>
                     Sair
                 </button>
             </Logout>
