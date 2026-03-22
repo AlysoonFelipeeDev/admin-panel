@@ -43,10 +43,10 @@ export function Login(){
                         />
                         {errors.password && <span>{errors.password.message}</span>}
                     </div>
-                    <ButtonLogin><button type="submit">Entrar</button></ButtonLogin>
+                    <ButtonLogin><button type="submit">{logingIn ? "Entrando" : "Entrar"}</button></ButtonLogin>
                 </Form>
                 <Register>
-                    <p>Não tem cadastro?<button>{logingIn ? "Entrando..." : "Clique aqui!"}</button></p>
+                    <p>Não tem cadastro?<button>Clique Aqui</button></p>
                 </Register>
             </ContainerForm>
         </Container>
