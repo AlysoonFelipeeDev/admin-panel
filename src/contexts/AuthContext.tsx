@@ -1,9 +1,10 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import type { userContextType } from "../types/userContextType";
 import { useMutation } from "@tanstack/react-query";
 import { usersService } from "../services/users";
 import type { LoginCredentials, User } from "../types/user";
 import { useNavigate } from "react-router-dom";
+import { api } from "../lib/api";
 
 
 
@@ -17,6 +18,7 @@ type AuthProviderProps = {
 
 export function AuthProvider({children}: AuthProviderProps){
     const [user, setUser] = useState<User | null>(null)
+    const [loading, setLoading] = useState<boolean>(false)
     const navigate = useNavigate()
 
     const loginMutation = useMutation({
@@ -29,12 +31,28 @@ export function AuthProvider({children}: AuthProviderProps){
         }
     })
 
+    useEffect(() => {
+        setLoading(true)
+        const storageUser = localStorage.getItem('user')
+        const storageToken = localStorage.getItem('token')
+
+        if(storageUser && storageToken){
+            try {
+                setUser(JSON.parse(storageUser))
+                api.defaults.headers.Authorization =  `Bearer ${storageToken}`
+            } catch (error) {
+                navigate('/login')
+            }
+        }
+        setLoading(false)
+    }, [])
+
     const signIn = (credentials: LoginCredentials) => loginMutation.mutate(credentials)
     const logingIn = loginMutation.isPending
 
 
     return (
-        <AuthContext.Provider value={{user, signIn, logingIn}}>
+        <AuthContext.Provider value={{user, signIn, logingIn, loading}}>
             {children}
         </AuthContext.Provider>
     )

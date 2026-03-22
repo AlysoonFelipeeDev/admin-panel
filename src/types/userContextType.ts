@@ -4,4 +4,5 @@ export interface userContextType {
     user: User | null;
     signIn: (credentials: LoginCredentials) => void;
     logingIn: boolean
+    loading: boolean
 }
