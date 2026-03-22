@@ -10,7 +10,7 @@ export function Header(){
             <Grouped>
                 <div><Bell/></div>
                 <div><CircleUser/></div>
-                <div>{user?.role}</div>
+                <div>{user?.role === 'admin' ? "Administrador(a)" : "Membro(a)"}</div>
             </Grouped>
         </>
     )

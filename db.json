@@ -18,6 +18,13 @@
       "name": "Lucas",
       "role": "admin",
       "id": 3
+    },
+    {
+      "email": "ame@teste.com",
+      "password": "$2a$10$psLW1yX4xTltxueS7p1.xexLFmyHdl.LRFvK5cE5.vtSjNnRCwqWK",
+      "name": "Amélia Elia",
+      "role": "member",
+      "id": 4
     }
   ]
 }
