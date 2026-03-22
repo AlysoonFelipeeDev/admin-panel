@@ -7,6 +7,7 @@ import { Profile } from './pages/Profile'
 import { Login } from './pages/Login'
 import { AuthProvider } from './contexts/AuthContext'
 import { Register } from './pages/Register'
+import { PrivateRoute } from './components/PrivateRoute'
 
 function App() {
 
@@ -18,10 +19,12 @@ function App() {
           <Routes>
             <Route path='/login' element={<Login/>} />
             <Route path='/register' element={<Register />} />
-            <Route element={<DefaultLayout/>}>
-              <Route path='/' element={<Dashboard/>} />
-              <Route path='/users' element={<Users/>} />
-              <Route path='/profile' element={<Profile/>} />
+            <Route element={<PrivateRoute/>}>
+              <Route element={<DefaultLayout/>}>
+                <Route path='/' element={<Dashboard/>} />
+                <Route path='/users' element={<Users/>} />
+                <Route path='/profile' element={<Profile/>} />
+              </Route>
             </Route>
           </Routes>
         </AuthProvider>
