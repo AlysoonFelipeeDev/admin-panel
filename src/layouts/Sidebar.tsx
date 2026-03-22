@@ -5,7 +5,8 @@ import { useUser } from "../contexts/AuthContext"
 
 
 export function Sidebar(){
-    const {logout} = useUser()
+    const {user, logout} = useUser()
+    const isAdmin = user?.role === 'admin'
     return (
         <>
             <Header>ADMIN PAINEL</Header>
@@ -14,14 +15,18 @@ export function Sidebar(){
                     <LayoutDashboard/> 
                     <span>Painel</span>
                 </OptionsPages>
-                <OptionsPages to={"/users"}>
-                    <Users/> 
-                    <span>Usuários</span>
-                </OptionsPages>
-                <OptionsPages to={'#'}>
-                    <ChartSpline/>  
-                    <span>Relatórios</span>
-                </OptionsPages>
+                {isAdmin && (
+                    <>
+                        <OptionsPages to={"/users"}>
+                            <Users/> 
+                            <span>Usuários</span>
+                        </OptionsPages>
+                        <OptionsPages to={'#'}>
+                            <ChartSpline/>  
+                            <span>Relatórios</span>
+                        </OptionsPages>
+                    </>
+                )}
                 <OptionsPages to={"/profile"}>
                     <UserRoundPen /> 
                     <span>Meu Perfil</span>
