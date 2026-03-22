@@ -1,14 +1,16 @@
 import { Bell, CircleUser, Menu } from "lucide-react"
 import styled from "styled-components"
+import { useUser } from "../contexts/AuthContext"
 
 export function Header(){
+    const {user} = useUser()
     return (
         <>
             <div><Menu/></div>
             <Grouped>
                 <div><Bell/></div>
                 <div><CircleUser/></div>
-                <div>Admin</div>
+                <div>{user?.role}</div>
             </Grouped>
         </>
     )

@@ -2,9 +2,11 @@ import styled from "styled-components";
 import { PageHeader } from "../components/Ui/PageHeader";import { StatCard } from "../components/Ui/StatCard";
 import { TaskTable } from "../components/Ui/TaskTable";
 import { RecentActivities } from "../components/Ui/RecentActivities";
+import { useUser } from "../contexts/AuthContext";
 ;
 
 export function Dashboard() {
+    const {user} = useUser()
     const activities = [
         {time: '40 min atrás', activity: "Trabalho Realizado", description: "cod. 1234"},
         {time: '1hr atrás', activity: "Iniciou uma atividade", description: "cod. 4567"},
@@ -22,7 +24,7 @@ export function Dashboard() {
     ]
     return (
         <Container>
-            <PageHeader title={"Bem vindo Alyson!"}/>
+            <PageHeader title={`Bem vindo ${user?.name}`}/>
             <WorksDatas>
             {stats.map(stat => (
                 <StatCard label={stat.label} value={stat.value}/>
