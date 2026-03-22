@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import type { userContextType } from "../types/userContextType";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { usersService } from "../services/users";
 import type { LoginCredentials, User } from "../types/user";
 import { useNavigate } from "react-router-dom";
@@ -20,6 +20,7 @@ export function AuthProvider({children}: AuthProviderProps){
     const [user, setUser] = useState<User | null>(null)
     const [loading, setLoading] = useState<boolean>(true)
     const navigate = useNavigate()
+    const queryClient = useQueryClient()
 
     const loginMutation = useMutation({
         mutationFn: usersService.login,
@@ -40,12 +41,20 @@ export function AuthProvider({children}: AuthProviderProps){
                 setUser(JSON.parse(storageUser))
                 api.defaults.headers.Authorization =  `Bearer ${storageToken}`
             } catch (error) {
-                localStorage.clear()
-                navigate('/login')
+                logout()
             }
         }
         setLoading(false)
     }, [])
+
+    const logout = () => {
+        localStorage.removeItem('token')
+        localStorage.removeItem('user')
+        setUser(null)
+        delete api.defaults.headers.Authorization
+        queryClient.clear()
+        navigate('/login')
+    }
 
     const signIn = (credentials: LoginCredentials) => loginMutation.mutate(credentials)
     const logingIn = loginMutation.isPending
