@@ -1,12 +1,24 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useUser } from "../contexts/AuthContext";
 
-export function PrivateRoute(){
+interface PrivateRouteProps {
+    allowedRoles?: string[]
+}
+
+export function PrivateRoute({ allowedRoles }: PrivateRouteProps ){
     const {user, loading} = useUser()
 
     if(loading) {
         return <div>Carregando...</div>
     }
 
-    return user ? <Outlet /> : <Navigate to="/login" />
+    if(!user ) {
+        return <Navigate to="/login" />
+    }
+
+    if(allowedRoles && !allowedRoles.includes(user.role)) {
+        return <Navigate to='/' />
+    }
+
+    return <Outlet />
 }
