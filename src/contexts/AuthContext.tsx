@@ -24,7 +24,7 @@ export function AuthProvider({children}: AuthProviderProps){
     const loginMutation = useMutation({
         mutationFn: usersService.login,
         onSuccess: (data) => {
-            localStorage.setItem('token', data.token)
+            localStorage.setItem('token', data.accessToken)
             localStorage.setItem('user', JSON.stringify(data.user))
             setUser(data.user)
             navigate('/')

@@ -10,5 +10,5 @@ export type LoginCredentials = Pick<User, 'email'> & {password: string}
 
 export type AuthUser = {
     user: User;
-    token: string
+    accessToken: string
 }
