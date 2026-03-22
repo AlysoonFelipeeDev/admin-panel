@@ -18,7 +18,7 @@ type AuthProviderProps = {
 
 export function AuthProvider({children}: AuthProviderProps){
     const [user, setUser] = useState<User | null>(null)
-    const [loading, setLoading] = useState<boolean>(false)
+    const [loading, setLoading] = useState<boolean>(true)
     const navigate = useNavigate()
 
     const loginMutation = useMutation({
@@ -32,7 +32,6 @@ export function AuthProvider({children}: AuthProviderProps){
     })
 
     useEffect(() => {
-        setLoading(true)
         const storageUser = localStorage.getItem('user')
         const storageToken = localStorage.getItem('token')
 
@@ -41,6 +40,7 @@ export function AuthProvider({children}: AuthProviderProps){
                 setUser(JSON.parse(storageUser))
                 api.defaults.headers.Authorization =  `Bearer ${storageToken}`
             } catch (error) {
+                localStorage.clear()
                 navigate('/login')
             }
         }
