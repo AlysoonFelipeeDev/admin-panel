@@ -3,6 +3,7 @@ import { usersService } from "../services/users";
 import type { User } from "../types/user";
 
 
+
 export function useUsers() {
     const queryClient = useQueryClient()
 
@@ -29,12 +30,20 @@ export function useUsers() {
         }
     })
 
+    const editMutation = useMutation({
+        mutationFn: usersService.updateUser,
+        onSuccess: () => {
+            queryClient.invalidateQueries({queryKey: ['users']})
+        }
+    })
+
     return {
         users: query.data ?? [],
         isLoading: query.isLoading,
         isError: query.isError,
         createUser: (user: Omit<User, 'id'>) => createMutation.mutate(user),
         isCreating: createMutation.isPending,
-        deleteUser: (id: string | number) => deleteMutation.mutate(id)
+        deleteUser: (id: string | number) => deleteMutation.mutate(id),
+        editUser: ({id, user}: {id: string | number, user: User}) => editMutation.mutate({id, user})
     }
 }

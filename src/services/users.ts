@@ -17,7 +17,7 @@ export const usersService = {
         return response.data
     },
 
-    async updateUser({id, user}: {id: string, user: User}): Promise<User> {
+    async updateUser({id, user}: {id: string | number, user: User}): Promise<User> {
         const response = await api.put(`/users/${id}`, {user})
         return response.data
     },
