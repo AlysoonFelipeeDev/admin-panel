@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { PageHeader } from "../components/Ui/PageHeader"
 import { EditProfile } from "../components/Ui/EditProfile"
 import { useUser } from "../contexts/AuthContext"
+import { EditFormUser } from "../components/EditFormUser"
 
 export function Profile(){
     const {user} = useUser()
@@ -12,6 +13,7 @@ export function Profile(){
             <ContainerProfile>
                 <EditProfile name={user?.name ?? ""} email={user?.email ?? ""} data={'Março 2026'}/>
             </ContainerProfile>
+                <EditFormUser />
         </Container>
     )
 }
