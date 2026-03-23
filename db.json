@@ -20,13 +20,6 @@
       "name": "Priscila Ozório",
       "role": "member",
       "id": 3
-    },
-    {
-      "email": "ana@teste.com",
-      "password": "$2a$10$ci5rrGnhJxx/nchgKS6P/.s4J23/sExLKgf4U5M9svTvtuJEs/PhK",
-      "name": "Ana Laura",
-      "role": "member",
-      "id": 4
     }
   ]
 }

@@ -23,6 +23,9 @@ export function useUsers() {
         mutationFn: usersService.deleteUser,
         onSuccess: () => {
             queryClient.invalidateQueries({queryKey: ['users']})
+        }, 
+        onError: (error) => {
+            console.log('Erro ao deltar', error)
         }
     })
 
