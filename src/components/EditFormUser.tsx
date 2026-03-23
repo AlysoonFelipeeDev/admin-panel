@@ -5,6 +5,7 @@ import { updateUserSchema, type EditProfileData } from "../schemas/authSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useUsers } from "../hooks/useUsers"
 import { useUser } from "../contexts/AuthContext"
+import { useEffect } from "react"
 
 export function EditFormUser(){
     const { editUser } = useUsers()
@@ -18,6 +19,16 @@ export function EditFormUser(){
         resolver: zodResolver(updateUserSchema)
     })
     
+    useEffect(() => {
+        if(user) {
+            reset({
+                name: user.name,
+                email: user.email,
+                role: user.role
+            })
+        }
+    }, [user, reset])
+
     const onSubmit = (data: EditProfileData) => {
         if(!user?.id) return
         editUser({
