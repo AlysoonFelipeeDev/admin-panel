@@ -8,10 +8,12 @@ import { Button } from "../components/Ui/Button"
 
 export function Users() {
         const {users} = useUsers()
+        const adminsActive = users.filter(admin => admin.role === 'admin')
+        const memberActive = users.filter(member => member.role === 'member')
         const stats = [
             { label: "Total Usuários:", value: users.length },
-            { label: "Admins Ativos:", value: 12 },
-            { label: "Membros:", value: 138 },
+            { label: "Admins Ativos:", value: adminsActive.length },
+            { label: "Membros:", value: memberActive.length },
         ]
         const formatedUsers = users?.map(user => ({
             name: user.name,
