@@ -1,6 +1,5 @@
 import type { ReactNode } from "react"
 import styled from "styled-components"
-import { Button } from "./Button"
 
 interface UserTableProps {
     array: {
@@ -28,16 +27,7 @@ export function UserTable({array}: UserTableProps){
                             <td>{item.name}</td>
                             <td>{item.email}</td>
                             <td>{item.position}</td>
-                            <td>
-                                <ContainerButtons>
-                                    <Button>
-                                        Editar
-                                    </Button>
-                                    <Button>
-                                        Deletar
-                                    </Button>
-                                </ContainerButtons>
-                            </td>
+                            <td>{item.actions}</td>
                     </tr>
                         ))}
                 </tbody>
@@ -74,8 +64,3 @@ const StyledTable = styled.table`
     }
 `
 
-const ContainerButtons = styled.div`
-    display: flex;
-    justify-content: space-between;
-    width: 150px;
-`

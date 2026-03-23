@@ -2,17 +2,32 @@ import styled from "styled-components"
 import { StatCard } from "../components/Ui/StatCard"
 import { PageHeader } from "../components/Ui/PageHeader"
 import { UserTable } from "../components/Ui/UserTable"
+import { useUsers } from "../hooks/useUsers"
+import { Button } from "../components/Ui/Button"
+
 
 export function Users() {
-        const users = [
-            { name: "Alyson", email:"alyson@teste.com", position: "Admin", actions: "Ativo" },
-            { name: "Priscila", email:"prii@teste.com", position: "Member", actions: "Desativado" },
-        ];
+        const {users} = useUsers()
         const stats = [
-            { label: "Total Usuários:", value: 150 },
+            { label: "Total Usuários:", value: users.length },
             { label: "Admins Ativos:", value: 12 },
             { label: "Membros:", value: 138 },
         ]
+        const formatedUsers = users?.map(user => ({
+            name: user.name,
+            email: user.email,
+            position: user.role,
+            actions: (
+                <ContainerButtons>
+                    <Button>
+                        Editar
+                    </Button>
+                    <Button>
+                        Deletar
+                    </Button>
+                </ContainerButtons> 
+            )
+        })) || []
     return (
         <Container>
             <PageHeader title={"Gerenciamento de Usuários"}/>
@@ -22,7 +37,7 @@ export function Users() {
                 ))}
             </StatsGrid>
             <TableContainer>
-                <UserTable array={users}/>
+                <UserTable array={formatedUsers}/>
             </TableContainer>
         </Container>
     )
@@ -45,4 +60,10 @@ const TableContainer = styled.div`
     width: 100%;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+`
+
+const ContainerButtons = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
 `
