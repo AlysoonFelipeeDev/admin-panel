@@ -1,13 +1,16 @@
 import styled from "styled-components"
 import { PageHeader } from "../components/Ui/PageHeader"
 import { EditProfile } from "../components/Ui/EditProfile"
+import { useUser } from "../contexts/AuthContext"
 
 export function Profile(){
+    const {user} = useUser()
+
     return (
         <Container>
             <PageHeader title={'Meu Perfil'}/>
             <ContainerProfile>
-                <EditProfile name={'Alyson Felipe Ozório'} email={'alyson@teste.com'} data={'Março 2026'}/>
+                <EditProfile name={user?.name ?? ""} email={user?.email ?? ""} data={'Março 2026'}/>
             </ContainerProfile>
         </Container>
     )

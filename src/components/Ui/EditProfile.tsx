@@ -1,20 +1,18 @@
 import styled from "styled-components"
 import { Button } from "./Button"
-import { useUser } from "../../contexts/AuthContext"
 
 interface EditProfileProps {
     name: string,
     email: string,
     data: string
 }
-export function EditProfile({data}: EditProfileProps){
-    const {user} = useUser()
+export function EditProfile({name, email, data}: EditProfileProps){
     return (
         <>
             <ProfileUser>
                 <div>
-                    <h1>{user?.name}</h1>
-                    <p>Email: {user?.email}</p>
+                    <h1>{name}</h1>
+                    <p>Email: {email}</p>
                     <p>Início: {data}</p>
                 </div>
                 <Button>Editar</Button>
