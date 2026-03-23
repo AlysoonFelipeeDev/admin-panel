@@ -7,7 +7,7 @@ import { Button } from "../components/Ui/Button"
 
 
 export function Users() {
-        const {users} = useUsers()
+        const {users, deleteUser} = useUsers()
         const adminsActive = users.filter(admin => admin.role === 'admin')
         const memberActive = users.filter(member => member.role === 'member')
         const stats = [
@@ -24,7 +24,7 @@ export function Users() {
                     <Button>
                         Editar
                     </Button>
-                    <Button>
+                    <Button onClick={() => deleteUser(user.id)}>
                         Deletar
                     </Button>
                 </ContainerButtons> 

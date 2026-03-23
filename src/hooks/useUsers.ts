@@ -19,11 +19,19 @@ export function useUsers() {
         }
     })
 
+    const deleteMutation = useMutation({
+        mutationFn: usersService.deleteUser,
+        onSuccess: () => {
+            queryClient.invalidateQueries({queryKey: ['users']})
+        }
+    })
+
     return {
         users: query.data ?? [],
         isLoading: query.isLoading,
         isError: query.isError,
         createUser: (user: Omit<User, 'id'>) => createMutation.mutate(user),
-        isCreating: createMutation.isPending
+        isCreating: createMutation.isPending,
+        deleteUser: (id: string | number) => deleteMutation.mutate(id)
     }
 }

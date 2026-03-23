@@ -1,28 +1,30 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Alyson",
       "email": "alyson@teste.com",
-      "password": "12345678"
-    },
-    {
-      "id": 2,
-      "name": "Priscila",
-      "email": "prii@teste.com",
-      "password": "12345678"
-    },
-    {
-      "email": "lucas@teste.com",
-      "password": "$2a$10$yauhYB3VcYFo51q3hn3p8em7htoymHjMU35ORtCQaZSMneIb4QM0a",
-      "name": "Lucas",
+      "password": "$2a$10$r6jIjm4/U7qAg30EtT/h9eXuk9yRXM4f1dlCgDa5vNuJXKo7eSR9C",
+      "name": "Alyson Ozório",
       "role": "admin",
+      "id": 1
+    },
+    {
+      "email": "luc@teste.com",
+      "password": "$2a$10$VjiFIr/duLpIagDoja1LXeC5/F8dMl2V9r3chGoS7uSW9.snmC7J2",
+      "name": "Lucas Alves Silva",
+      "role": "member",
+      "id": 2
+    },
+    {
+      "email": "prii@teste.com",
+      "password": "$2a$10$/e7iCYkP9YsdmQHDA8xKPuxzldgkzGxeAt1Qu9bPR3daJgY9b1b5m",
+      "name": "Priscila Ozório",
+      "role": "member",
       "id": 3
     },
     {
-      "email": "ame@teste.com",
-      "password": "$2a$10$psLW1yX4xTltxueS7p1.xexLFmyHdl.LRFvK5cE5.vtSjNnRCwqWK",
-      "name": "Amélia Elia",
+      "email": "ana@teste.com",
+      "password": "$2a$10$ci5rrGnhJxx/nchgKS6P/.s4J23/sExLKgf4U5M9svTvtuJEs/PhK",
+      "name": "Ana Laura",
       "role": "member",
       "id": 4
     }

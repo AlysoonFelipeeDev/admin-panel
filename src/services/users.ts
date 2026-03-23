@@ -22,7 +22,7 @@ export const usersService = {
         return response.data
     },
 
-    async deleteUser(id: string) {
+    async deleteUser(id: string | number) {
         await api.delete(`/users/${id}`)
     }
 }
