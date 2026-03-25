@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useUsers } from "../hooks/useUsers"
 import { useUser } from "../contexts/AuthContext"
 import { useEffect } from "react"
+import type { User } from "../types/user"
 
 export function EditFormUser(){
     const { editUser } = useUsers()
@@ -33,7 +34,7 @@ export function EditFormUser(){
         if(!user?.id) return
         editUser({
             id: user.id, 
-            user: {...user, ...data}
+            user: {...user, ...data } as User
         })
     }
 

@@ -1,9 +1,9 @@
 {
   "users": [
     {
-      "email": "alyson@teste.com",
-      "password": "$2a$10$r6jIjm4/U7qAg30EtT/h9eXuk9yRXM4f1dlCgDa5vNuJXKo7eSR9C",
-      "name": "Alyson Ozório",
+      "email": "alyson@teste.com.br",
+      "password": "$2a$10$9SlCjnlT0uBs25T7v5bs0utnzzwRWhLWERPmivZuMH.iaXEnQSuHu",
+      "name": "Alyson Felipe Ozório",
       "role": "admin",
       "id": 1
     },
