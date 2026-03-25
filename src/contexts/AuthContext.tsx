@@ -6,8 +6,6 @@ import type { LoginCredentials, User } from "../types/user";
 import { useNavigate } from "react-router-dom";
 import { api } from "../lib/api";
 
-
-
 export const AuthContext = createContext(
     {} as userContextType
 )
@@ -56,12 +54,22 @@ export function AuthProvider({children}: AuthProviderProps){
         navigate('/login')
     }
 
+    const editMutation = useMutation({
+        mutationFn: usersService.updateUser,
+        onSuccess: (data) => {
+            localStorage.setItem('user', JSON.stringify(data))
+            setUser(data)
+            queryClient.invalidateQueries({queryKey: ['users']})
+        }
+    })
+
     const signIn = (credentials: LoginCredentials) => loginMutation.mutate(credentials)
     const logingIn = loginMutation.isPending
+    const editUser = ({id, user}: {id: string | number, user: User}) => editMutation.mutate({id, user})
 
 
     return (
-        <AuthContext.Provider value={{user, setUser, signIn, logingIn, loading, logout}}>
+        <AuthContext.Provider value={{user, signIn, logingIn, loading, logout, editUser}}>
             {children}
         </AuthContext.Provider>
     )

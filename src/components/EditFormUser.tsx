@@ -3,14 +3,12 @@ import { Button } from "./Ui/Button"
 import { useForm } from "react-hook-form"
 import { updateUserSchema, type EditProfileData } from "../schemas/authSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useUsers } from "../hooks/useUsers"
 import { useUser } from "../contexts/AuthContext"
 import { useEffect } from "react"
 import type { User } from "../types/user"
 
 export function EditFormUser(){
-    const { editUser } = useUsers()
-    const {user} = useUser()
+    const {user, editUser} = useUser()
     const {
         register,
         handleSubmit,

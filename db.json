@@ -20,6 +20,13 @@
       "name": "Priscila Ozório",
       "role": "member",
       "id": 3
+    },
+    {
+      "email": "samuka@teste.com.br",
+      "password": "$2a$10$l20rfyJ/7oFG7DzmzKF5HutzoBw1JIHsp.4VyR1eeSSghIBgrffn6",
+      "name": "Samuel Lino Souza",
+      "role": "admin",
+      "id": 4
     }
   ]
 }

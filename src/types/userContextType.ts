@@ -6,4 +6,5 @@ export interface userContextType {
     logingIn: boolean
     loading: boolean
     logout: () => void
+    editUser: ({id, user}: {id: string | number, user: User}) => void
 }
