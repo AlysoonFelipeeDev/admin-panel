@@ -4,9 +4,10 @@ import { Button } from "./Button"
 interface EditProfileProps {
     name: string,
     email: string,
-    data: string
+    data: string,
+    onEdit: () => void
 }
-export function EditProfile({name, email, data}: EditProfileProps){
+export function EditProfile({name, email, data, onEdit}: EditProfileProps){
     return (
         <>
             <ProfileUser>
@@ -15,7 +16,7 @@ export function EditProfile({name, email, data}: EditProfileProps){
                     <p>Email: {email}</p>
                     <p>Início: {data}</p>
                 </div>
-                <Button>Editar</Button>
+                <Button onClick={onEdit}>Editar</Button>
             </ProfileUser>
         </>
     )

@@ -40,7 +40,7 @@ export function EditFormUser(){
 
     
     return (
-        <Container>
+        <>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <label htmlFor="name">Nome:</label>
@@ -73,20 +73,11 @@ export function EditFormUser(){
                 </div>
                 <Button type="submit">Atualizar</Button>
             </Form>
-        </Container>
+        </>
     )
 }
 
-const Container = styled.div`
-    background-color: #FFFFFF;
-    border-radius: 10px;
-    margin: auto;
-    width: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-`
+
 
 const Form = styled.form`
     display: flex;
